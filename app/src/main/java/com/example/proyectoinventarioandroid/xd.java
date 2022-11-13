@@ -1,6 +1,6 @@
 package com.example.proyectoinventarioandroid;
 
 public class xd {
-    sadsadsadsad
-    jksdfgdskg
+    //adsadsadsad
+    //jksdfgdskg
 }
