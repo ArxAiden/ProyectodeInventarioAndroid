@@ -17,7 +17,7 @@
             android:name=".Categoria_nuevo"
             android:exported="false" />
         <activity
-            android:name=".Categorias"
+            android:name=".CategoriasForm"
             android:exported="false" />
         <activity
             android:name=".Ordenes_nuevo"

@@ -103,7 +103,7 @@ public class EstructuraCrear extends SQLiteOpenHelper {
         }
     }
 
-    ////REGISTRAR EN ARRAY LISTS
+    ////RETORNAR EN ARRAY LISTS
 
     public ArrayList<Categorias> reCategoria(){
         SQLiteDatabase db=this.getReadableDatabase();
@@ -140,7 +140,8 @@ public class EstructuraCrear extends SQLiteOpenHelper {
 
     public ArrayList<Productos> reProducto(){
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("select * from productos",null);
+        Cursor cursor=db.rawQuery("select nombrecategoria from Categorias nombrecategoria INNER JOIN Producto on Categorias",null);
+
         ArrayList<Productos> listProducto=new ArrayList<>();
         if(cursor.moveToNext()){
             while(!cursor.isAfterLast()){

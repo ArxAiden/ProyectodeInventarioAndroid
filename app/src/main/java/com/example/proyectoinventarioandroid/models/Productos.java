@@ -19,9 +19,6 @@ public class Productos {
         this.nombremarca = nombremarca;
     }
 
-    public Productos(String codproducto, String nombreproducto, String precioproducto, String descripcionproducto, String stockproducto, String nombrecategoria, String nombremarca) {
-    }
-// Intentar ARreglar esto
 
     public String getCodProducto() {
         return codProducto;
