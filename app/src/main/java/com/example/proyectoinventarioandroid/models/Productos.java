@@ -1,52 +1,66 @@
 package com.example.proyectoinventarioandroid.models;
 
 public class Productos {
-    private String Nombreproducto;
-    private String PrecioProducto;
-    private String DescripcionProducto;
-    private String StockProducto;
+    private String codProducto;
+    private String nombreproducto;
+    private String precioproducto;
+    private String descripcionproducto;
+    private String stockproducto;
     private Categorias nombrecategoria;
     private Marcas nombremarca;
 
-    public Productos(String nombreproducto, String precioProducto, String descripcionProducto, String stockProducto, Categorias nombrecategoria, Marcas nombremarca) {
-        Nombreproducto = nombreproducto;
-        PrecioProducto = precioProducto;
-        DescripcionProducto = descripcionProducto;
-        StockProducto = stockProducto;
+    public Productos(String codProducto, String nombreproducto, String precioproducto, String descripcionproducto, String stockproducto, Categorias nombrecategoria, Marcas nombremarca) {
+        this.codProducto = codProducto;
+        this.nombreproducto = nombreproducto;
+        this.precioproducto = precioproducto;
+        this.descripcionproducto = descripcionproducto;
+        this.stockproducto = stockproducto;
         this.nombrecategoria = nombrecategoria;
         this.nombremarca = nombremarca;
     }
 
+    public Productos(String codproducto, String nombreproducto, String precioproducto, String descripcionproducto, String stockproducto, String nombrecategoria, String nombremarca) {
+    }
+// Intentar ARreglar esto
+
+    public String getCodProducto() {
+        return codProducto;
+    }
+
+    public void setCodProducto(String codProducto) {
+        this.codProducto = codProducto;
+    }
+
     public String getNombreproducto() {
-        return Nombreproducto;
+        return nombreproducto;
     }
 
     public void setNombreproducto(String nombreproducto) {
-        Nombreproducto = nombreproducto;
+        this.nombreproducto = nombreproducto;
     }
 
-    public String getPrecioProducto() {
-        return PrecioProducto;
+    public String getPrecioproducto() {
+        return precioproducto;
     }
 
-    public void setPrecioProducto(String precioProducto) {
-        PrecioProducto = precioProducto;
+    public void setPrecioproducto(String precioproducto) {
+        this.precioproducto = precioproducto;
     }
 
-    public String getDescripcionProducto() {
-        return DescripcionProducto;
+    public String getDescripcionproducto() {
+        return descripcionproducto;
     }
 
-    public void setDescripcionProducto(String descripcionProducto) {
-        DescripcionProducto = descripcionProducto;
+    public void setDescripcionproducto(String descripcionproducto) {
+        this.descripcionproducto = descripcionproducto;
     }
 
-    public String getStockProducto() {
-        return StockProducto;
+    public String getStockproducto() {
+        return stockproducto;
     }
 
-    public void setStockProducto(String stockProducto) {
-        StockProducto = stockProducto;
+    public void setStockproducto(String stockproducto) {
+        this.stockproducto = stockproducto;
     }
 
     public Categorias getNombrecategoria() {
@@ -66,13 +80,14 @@ public class Productos {
     }
 
     public String infoProducto(){
-        return "*** Info Usuarios ***\n" +
+        return "*** Info Producto ***\n" +
+                "\t Codigo: " + this.getCodProducto() + "\n" +
                 "\t Nombre: " + this.getNombreproducto() + "\n" +
-                "\t Correo: " + this.getPrecioProducto() + "\n" +
-                "\t Pass: " + this.getDescripcionProducto() + "\n" +
-                "\t RUT: " + this.getStockProducto() + "\n" +
+                "\t Precio: " + this.getPrecioproducto() + "\n" +
+                "\t Descripcion: " + this.getDescripcionproducto() + "\n" +
+                "\t Stock: " + this.getStockproducto() + "\n" +
                 "\t Categoria: " + this.getNombrecategoria() + "\n" +
                 "\t Marca: " + this.getNombremarca() + "\n" +
-                "*** Fin Info Usuarios ***";
+                "*** Fin Info Producto ***";
     }
 }
