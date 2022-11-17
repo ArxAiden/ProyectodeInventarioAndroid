@@ -103,6 +103,8 @@ public class EstructuraCrear extends SQLiteOpenHelper {
         }
     }
 
+    ////REGISTRAR EN ARRAY LISTS
+
     public ArrayList<Categorias> reCategoria(){
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery("select * from categoria",null);
@@ -156,5 +158,40 @@ public class EstructuraCrear extends SQLiteOpenHelper {
         cursor.close();
         return listProducto;
     }
+
+    ////BUSCAR
+
+
+
+    public Categorias buscarCategoria(String codCategoria){
+        for(Categorias re: reCategoria()){
+            if(re.getCodcategorias().equalsIgnoreCase(codCategoria)){
+                return re;
+            }
+        }
+        return null;
+    }
+    public Marcas buscarMarca(String codCategoria){
+        for(Marcas re: reMarcas()){
+            if(re.getCodmarca().equalsIgnoreCase(codCategoria)){
+                return re;
+            }
+        }
+        return null;
+    }
+
+    public Productos buscarProducto(String codProducto){
+        for(Productos re: reProducto()){
+            if(re.getCodProducto().equalsIgnoreCase(codProducto)){
+                return re;
+            }
+        }
+        return null;
+    }
+
+
+
+
+
 
 }
