@@ -29,10 +29,13 @@
         android:id="@+id/btnproductoconfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="105dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="79dp"
         android:text="Agregar"
-        app:layout_constraintTop_toBottomOf="@+id/txtdescripcionpr"
-        tools:layout_editor_absoluteX="153dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button7"
+        app:layout_constraintTop_toBottomOf="@+id/txtdescripcionpr" />
 
     <EditText
         android:id="@+id/txtnombrepr"
@@ -119,5 +122,17 @@
         android:inputType="textMultiLine"
         app:layout_constraintTop_toBottomOf="@+id/combocategoria"
         tools:layout_editor_absoluteX="122dp" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="62dp"
+        android:text="Regresar"
+        app:layout_constraintEnd_toStartOf="@+id/btnproductoconfirm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtdescripcionpr" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

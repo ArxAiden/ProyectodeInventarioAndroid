@@ -5,12 +5,16 @@ public class Productos {
     private String PrecioProducto;
     private String DescripcionProducto;
     private String StockProducto;
+    private Categorias nombrecategoria;
+    private Marcas nombremarca;
 
-    public Productos(String nombreproducto, String precioProducto, String descripcionProducto, String stockProducto) {
+    public Productos(String nombreproducto, String precioProducto, String descripcionProducto, String stockProducto, Categorias nombrecategoria, Marcas nombremarca) {
         Nombreproducto = nombreproducto;
         PrecioProducto = precioProducto;
         DescripcionProducto = descripcionProducto;
         StockProducto = stockProducto;
+        this.nombrecategoria = nombrecategoria;
+        this.nombremarca = nombremarca;
     }
 
     public String getNombreproducto() {
@@ -45,5 +49,30 @@ public class Productos {
         StockProducto = stockProducto;
     }
 
+    public Categorias getNombrecategoria() {
+        return nombrecategoria;
+    }
 
+    public void setNombrecategoria(Categorias nombrecategoria) {
+        this.nombrecategoria = nombrecategoria;
+    }
+
+    public Marcas getNombremarca() {
+        return nombremarca;
+    }
+
+    public void setNombremarca(Marcas nombremarca) {
+        this.nombremarca = nombremarca;
+    }
+
+    public String infoProducto(){
+        return "*** Info Usuarios ***\n" +
+                "\t Nombre: " + this.getNombreproducto() + "\n" +
+                "\t Correo: " + this.getPrecioProducto() + "\n" +
+                "\t Pass: " + this.getDescripcionProducto() + "\n" +
+                "\t RUT: " + this.getStockProducto() + "\n" +
+                "\t Categoria: " + this.getNombrecategoria() + "\n" +
+                "\t Marca: " + this.getNombremarca() + "\n" +
+                "*** Fin Info Usuarios ***";
+    }
 }

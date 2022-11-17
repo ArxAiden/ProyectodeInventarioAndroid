@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.proyectoinventarioandroid.models.EstructuraCrear;
+
 public class MainActivity extends AppCompatActivity {
+    private EstructuraCrear crearDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
