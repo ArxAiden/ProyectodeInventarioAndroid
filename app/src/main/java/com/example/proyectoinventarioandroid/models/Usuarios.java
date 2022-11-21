@@ -1,10 +1,11 @@
 package com.example.proyectoinventarioandroid.models;
 
 public class Usuarios {
+    private String rutusuario;
     private String nombreusuario;
     private String correousuario;
     private String passusuario;
-    private String rutusuario;
+
 
     public Usuarios(String nombreusuario, String correousuario, String passusuario, String rutusuario) {
         this.nombreusuario = nombreusuario;

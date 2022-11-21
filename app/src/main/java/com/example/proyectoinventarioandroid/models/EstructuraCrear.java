@@ -17,22 +17,19 @@ public class EstructuraCrear extends SQLiteOpenHelper {
             "descripcionproducto TEXT not null," +
             "stockproducto int not null," +
             "foreign key(codmarca) references tb_marca(codmarca)," +
-            "foreign key(codcategoria) references tb_categoria(codcategoria)" +
-
+            "foreign key(codcategorias) references tb_categoria(codcategorias)" +
             ")";
     private final String crearUsuario="create table tb_usuario(" +
-            "codusuario TEXT primary key not null," +
+            "rutusuario TEXT primary key not null," +
             "nombreusuario TEXT not null," +
             "correousuario TEXT not null," +
-            "passusuario TEXT not null," +
-            "rutusuario int not null" +
+            "passusuario TEXT not null" +
             ")";
     private final String crearOrden="create table tb_orden(" +
             "idorden TEXT primary key not null," +
-            "nombreorden TEXT not null," +
             "fechaorden date not null," +
-            "foreign key(idproducto) references tb_producto(idproducto)," +
-            "foreign key(idusuario) references tb_usuario(idusuario)" +
+            "foreign key(codproducto) references tb_producto(codproducto)," +
+            "foreign key(rut) references tb_usuario(rut)" +
             ")";
     private final String crearCategoria="create table tb_categoria(" +
             "codcategorias TEXT primary key not null," +
@@ -90,10 +87,10 @@ public class EstructuraCrear extends SQLiteOpenHelper {
             bd.execSQL("INSERT INTO categoria VALUES('"+codProducto+"','"+nombreproducto+"','"+precioproducto+"','"+descripcionproducto+"','"+stockproducto+"','"+nombrecategoria+"','"+nombremarca);
         }
     }
-    public void agregarUsuario(String nombreusuario, String correousuario, String passusuario, String rutusuario){
+    public void agregarUsuario(String rutusuario, String nombreusuario, String correousuario, String passusuario){
         SQLiteDatabase bd = getWritableDatabase();
         if(bd != null){
-            bd.execSQL("INSERT INTO categoria VALUES('"+nombreusuario+"','"+correousuario+"','"+passusuario+"','"+rutusuario);
+            bd.execSQL("INSERT INTO categoria VALUES('"+rutusuario+"','"+nombreusuario+"','"+correousuario+"','"+passusuario);
         }
     }
     public void agregarOrden(String nombreusuario, String correousuario, String passusuario, String rutusuario){
