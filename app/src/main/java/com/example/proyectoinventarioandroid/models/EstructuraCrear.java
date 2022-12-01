@@ -1,5 +1,6 @@
 package com.example.proyectoinventarioandroid.models;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -69,123 +70,54 @@ public class EstructuraCrear extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(crearCategoria);
         sqLiteDatabase.execSQL(crearMarca);
     }
-    public void agregarCategorias(String codcategorias, String nombrecategoria, String descripcioncategoria){
-        SQLiteDatabase bd = getWritableDatabase();
-        if(bd != null){
-            bd.execSQL("INSERT INTO categoria VALUES('"+codcategorias+"','"+nombrecategoria+"','"+descripcioncategoria+"')");
-        }
-    }
-    public void agregarMarcas(String codmarca, String nombremarca, String descripcionmarca){
-        SQLiteDatabase bd = getWritableDatabase();
-        if(bd != null){
-            bd.execSQL("INSERT INTO categoria VALUES('"+codmarca+"','"+nombremarca+"','"+descripcionmarca+"')");
-        }
-    }
-    public void agregarProducto(String codProducto, String nombreproducto, String precioproducto, String descripcionproducto, String stockproducto, Categorias nombrecategoria, Marcas nombremarca){
-        SQLiteDatabase bd = getWritableDatabase();
-        if(bd != null){
-            bd.execSQL("INSERT INTO categoria VALUES('"+codProducto+"','"+nombreproducto+"','"+precioproducto+"','"+descripcionproducto+"','"+stockproducto+"','"+nombrecategoria+"','"+nombremarca);
-        }
-    }
-    public void agregarUsuario(String rutusuario, String nombreusuario, String correousuario, String passusuario){
-        SQLiteDatabase bd = getWritableDatabase();
-        if(bd != null){
-            bd.execSQL("INSERT INTO categoria VALUES('"+rutusuario+"','"+nombreusuario+"','"+correousuario+"','"+passusuario);
-        }
-    }
-    public void agregarOrden(String nombreusuario, String correousuario, String passusuario, String rutusuario){
-        SQLiteDatabase bd = getWritableDatabase();
-        if(bd != null){
-            bd.execSQL("INSERT INTO categoria VALUES('"+nombreusuario+"','"+correousuario+"','"+passusuario+"','"+rutusuario);
-        }
-    }
 
-    ////RETORNAR EN ARRAY LISTS
-
-    public ArrayList<Categorias> reCategoria(){
-        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("select * from categoria",null);
-        ArrayList<Categorias> listCategoria=new ArrayList<>();
+    //Estructura Categorias
+    public Categorias buscarCategoria(Categorias cat){
+        SQLiteDatabase db=this.getReadableDatabase(); //Lectura
+        Categorias busqueda=null;
+        Cursor cursor=db.rawQuery("select * from tb_categoria where codcategorias='"+cat.getCodcategorias()+"'",null);
         if(cursor.moveToNext()){
-            while(!cursor.isAfterLast()){
-                String codcategoria=cursor.getString(0);
+            while(cursor.isAfterLast()==false){
+                String codcategorias=cursor.getString(0);
                 String nombrecategoria=cursor.getString(1);
                 String descripcioncategoria=cursor.getString(2);
-                listCategoria.add(new Categorias(codcategoria,nombrecategoria,descripcioncategoria));
+                busqueda=new Categorias(codcategorias,nombrecategoria,descripcioncategoria);
                 cursor.moveToNext();
             }
         }
-        cursor.close();
-        return listCategoria;
+        return busqueda;
     }
-    public ArrayList<Marcas> reMarcas(){
-        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("select * from marcas",null);
-        ArrayList<Marcas> listMarca=new ArrayList<>();
+    public ArrayList<Categorias> listarCategoriasDB(){
+        SQLiteDatabase db=this.getReadableDatabase(); //Lectura
+        ArrayList<Categorias> listaCategorias=new ArrayList<>();
+        Cursor cursor=db.rawQuery("select * from tb_categoria",null);
         if(cursor.moveToNext()){
-            while(!cursor.isAfterLast()){
-                String codmarca=cursor.getString(0);
-                String nombremarca=cursor.getString(1);
-                String descripcionmarca=cursor.getString(2);
-                listMarca.add(new Marcas(codmarca,nombremarca,descripcionmarca));
+            while(cursor.isAfterLast()==false){
+                String codcategorias=cursor.getString(0);
+                String nombrecategoria=cursor.getString(1);
+                String descripcioncategoria=cursor.getString(2);
+                listaCategorias.add(new Categorias(codcategorias,nombrecategoria,descripcioncategoria));
                 cursor.moveToNext();
             }
         }
-        cursor.close();
-        return listMarca;
+        return listaCategorias;
     }
-
-    public ArrayList<Productos> reProducto(){
-        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("select nombrecategoria from Categorias nombrecategoria INNER JOIN Producto on Categorias",null);
-
-        ArrayList<Productos> listProducto=new ArrayList<>();
-        if(cursor.moveToNext()){
-            while(!cursor.isAfterLast()){
-                String codproducto=cursor.getString(0);
-                String nombreproducto=cursor.getString(1);
-                String precioproducto=cursor.getString(2);
-                String descripcionproducto=cursor.getString(3);
-                String stockproducto=cursor.getString(4);
-                String nombrecategoria=cursor.getString(5);
-                String nombremarca=cursor.getString(6);
-                listProducto.add(new Productos(codproducto,nombreproducto,precioproducto,descripcionproducto,stockproducto,nombrecategoria,nombremarca));
-                cursor.moveToNext();
-            }
+    public String registrarCategorias(Categorias cat){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues valores=new ContentValues();
+        valores.put("nombrecategoria",cat.getNombrecategoria());
+        if(buscarCategoria(cat)==null){
+            //insert
+            valores.put("codcategorias",cat.getCodcategorias());
+            db.insert("tb_categoria",null,valores);
+            return "Registro Insertado Correctamente!";
+        }else{
+            //update
+            db.update("tb_categoria",valores,"codcategorias='"+cat.getCodcategorias()+"'",null);
+            return "Registro Actualizado Correctamente!";
         }
-        cursor.close();
-        return listProducto;
     }
 
-    ////BUSCAR
-
-
-
-    public Categorias buscarCategoria(String codCategoria){
-        for(Categorias re: reCategoria()){
-            if(re.getCodcategorias().equalsIgnoreCase(codCategoria)){
-                return re;
-            }
-        }
-        return null;
-    }
-    public Marcas buscarMarca(String codCategoria){
-        for(Marcas re: reMarcas()){
-            if(re.getCodmarca().equalsIgnoreCase(codCategoria)){
-                return re;
-            }
-        }
-        return null;
-    }
-
-    public Productos buscarProducto(String codProducto){
-        for(Productos re: reProducto()){
-            if(re.getCodProducto().equalsIgnoreCase(codProducto)){
-                return re;
-            }
-        }
-        return null;
-    }
 
 
 
