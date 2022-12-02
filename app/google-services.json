@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "936989495878",
+    "project_id": "proyecto-inventario-android",
+    "storage_bucket": "proyecto-inventario-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936989495878:android:415e7be3051eb40037f047",
+        "android_client_info": {
+          "package_name": "com.example.proyectoinventarioandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936989495878-fe701rbu2529rrn91k3lbjjj17e3f7ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBW4NE19qtxFGRCuNhde9CAcJk2CeIG-oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936989495878-fe701rbu2529rrn91k3lbjjj17e3f7ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

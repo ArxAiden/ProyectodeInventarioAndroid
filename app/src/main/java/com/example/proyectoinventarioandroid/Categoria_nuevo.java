@@ -1,58 +1,83 @@
 package com.example.proyectoinventarioandroid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
-import java.util.ArrayList;
-import com.example.proyectoinventarioandroid.models.*;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Categoria_nuevo extends AppCompatActivity {
 
-    private EstructuraCrear crearBD;
-    private ListView lViewCategoria;
-    private ArrayList<String> listaInfoCategorias;
+    //private EstructuraCrear crearBD;
+    //private ListView lViewCategoria;
+    //private ArrayList<String> listaInfoCategorias;
+
+    Button btnaddcat;
+    EditText codCat, nombreCat, descCat;
+    private FirebaseFirestore mfirestore;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categoria_nuevo);
-        crearBD=new EstructuraCrear(this,"bd_categoria",null,1);
-        cargarListViewCategorías();
+        mfirestore = FirebaseFirestore.getInstance();
 
-    }
-    public void registrarCategorias(View v){
-        EditText eCodCat=(EditText) findViewById(R.id.txtcodcat);
-        EditText eNombreCat=(EditText) findViewById(R.id.txtnombrecat);
-        EditText eCatDesc=(EditText) findViewById(R.id.txtcatdescripcion);
-        String codcategoria=eCodCat.getText().toString();
-        String nombrecategoria=eNombreCat.getText().toString();
-        String descripcioncategoria=eCatDesc.getText().toString();
-        Toast.makeText(this, crearBD.registrarCategorias(new Categorias(codcategoria,nombrecategoria,descripcioncategoria)), Toast.LENGTH_SHORT).show();
-        cargarListViewCategorías();
-    }
-    public void cargarListViewCategorías(){
-        lViewCategoria=(ListView) findViewById(R.id.listviewcategorias);
-        listaInfoCategorias=new ArrayList<>();
-        ArrayList<Categorias> listaCategorias=crearBD.listarCategoriasDB();
-        if(!listaCategorias.isEmpty()){
-            for(Categorias recorrer : listaCategorias){
-                listaInfoCategorias.add(recorrer.getCodcategorias()+" , "+recorrer.getNombrecategoria()+ " , " +recorrer.getDescripcioncategoria());
+        this.setTitle("Crear Categoria");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        codCat = findViewById(R.id.codcat);
+        nombreCat = findViewById(R.id.nombrecat);
+        descCat = findViewById(R.id.desccat);
+        btnaddcat = findViewById(R.id.btnaddcat);
+
+        btnaddcat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String codcat = codCat.getText().toString().trim();
+                String nomcat = nombreCat.getText().toString().trim();
+                String catdesc = descCat.getText().toString().trim();
+
+                if(codcat.isEmpty() && nomcat.isEmpty() && catdesc.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Ingresar los datos", Toast.LENGTH_SHORT).show();
+                }else{
+                    postCat(codcat, nomcat, catdesc);
+                }
             }
-        }
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listaInfoCategorias);
-        lViewCategoria.setAdapter(adapter);
+        });
     }
 
+    private void postCat(String codcat, String nomcat, String catdesc) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("codcat", codcat);
+        map.put("nombrecat", nomcat);
+        map.put("desccat", catdesc);
 
-    public void volverMenu(View v){
-        Intent iMenu=new Intent(Categoria_nuevo.this,MainActivity.class);
-        startActivity(iMenu);
+        mfirestore.collection("categorias").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Toast.makeText(getApplicationContext(), "Creado exitosamente", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Error al ingresar", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 }

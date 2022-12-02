@@ -6,133 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".Productos_nuevo">
 
-    <EditText
-        android:id="@+id/txtpreciopr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/txtnombrepr"
-        tools:layout_editor_absoluteX="122dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:text="Precio"
-        app:layout_constraintEnd_toStartOf="@+id/txtpreciopr"
-        tools:layout_editor_absoluteY="145dp" />
-
-    <Button
-        android:id="@+id/btnproductoconfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="62dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="79dp"
-        android:text="Agregar"
+    <LinearLayout
+        android:layout_width="393dp"
+        android:layout_height="719dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button7"
-        app:layout_constraintTop_toBottomOf="@+id/txtdescripcionpr" />
-
-    <EditText
-        android:id="@+id/txtnombrepr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:layout_editor_absoluteX="122dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="23dp"
-        android:text="Nombre"
-        app:layout_constraintEnd_toStartOf="@+id/txtnombrepr"
-        tools:layout_editor_absoluteY="83dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="171dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="140dp"
-        android:text="Producto Nuevo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="23dp"
-        android:text="Marca"
-        app:layout_constraintEnd_toStartOf="@+id/combomarca"
-        tools:layout_editor_absoluteY="210dp" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Producto" />
 
-    <Spinner
-        android:id="@+id/combomarca"
-        android:layout_width="168dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="22dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtpreciopr"
-        tools:layout_editor_absoluteX="122dp" />
+        <EditText
+            android:id="@+id/nombrepro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
-    <Spinner
-        android:id="@+id/combocategoria"
-        android:layout_width="169dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="21dp"
-        app:layout_constraintTop_toBottomOf="@+id/combomarca"
-        tools:layout_editor_absoluteX="122dp" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripcion Producto" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:text="Categoria"
-        app:layout_constraintEnd_toStartOf="@+id/combocategoria"
-        tools:layout_editor_absoluteY="249dp" />
+        <EditText
+            android:id="@+id/txtdescpro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:text="Descripcion"
-        app:layout_constraintEnd_toStartOf="@+id/txtdescripcionpr"
-        tools:layout_editor_absoluteY="307dp" />
+        <TextView
+            android:id="@+id/textview6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categoria" />
 
-    <EditText
-        android:id="@+id/txtdescripcionpr"
-        android:layout_width="234dp"
-        android:layout_height="211dp"
-        android:layout_marginTop="18dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/combocategoria"
-        tools:layout_editor_absoluteX="122dp" />
+        <Spinner
+            android:id="@+id/combocat"
+            android:layout_width="match_parent"
+            android:layout_height="42dp" />
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="62dp"
-        android:text="Regresar"
-        app:layout_constraintEnd_toStartOf="@+id/btnproductoconfirm"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtdescripcionpr" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Marca" />
 
+        <Spinner
+            android:id="@+id/combomarca"
+            android:layout_width="match_parent"
+            android:layout_height="51dp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Precio" />
+
+        <EditText
+            android:id="@+id/txtprecpro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnaddpro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

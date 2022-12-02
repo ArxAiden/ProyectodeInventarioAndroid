@@ -6,76 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="160dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="123dp"
-        android:onClick="crearCategoria"
-        android:text="Categorias"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="159dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="129dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="123dp"
-        android:text="Marcas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menu"
+    <LinearLayout
+        android:layout_width="373dp"
+        android:layout_height="711dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="163dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="124dp"
-        android:text="Productos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inventario"
+            android:textAlignment="center"
+            android:textSize="34sp" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="159dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="124dp"
-        android:text="Seguimiento"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="crearProducto"
+            android:text="Productos" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="160dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="124dp"
-        android:text="Ordenes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="crearCategoria"
+            android:text="Categorias" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="crearMarca"
+            android:text="Marcas" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="crearOrden"
+            android:text="Ordenes" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
